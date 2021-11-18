@@ -33,10 +33,7 @@ public class UserServlet extends BaseServlet {
             ResultInfo info = new ResultInfo();
             info.setFlag(false);
             info.setErrorMsg("Wrong Verification Code");
-            ObjectMapper mapper = new ObjectMapper();
-            String json = mapper.writeValueAsString(info);
-            response.setContentType("application/json;charset=utf-8");
-            response.getWriter().write(json);
+            this.jsonResponse(info, response);
             return;
         }
 
@@ -63,9 +60,7 @@ public class UserServlet extends BaseServlet {
         String json = mapper.writeValueAsString(info);
 
         //set content-type to application.json
-        response.setContentType("application/json;charset=utf-8");
-        response.getWriter().write(json);
-
+        this.jsonResponse(json, response);
     }
 
     public void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -99,9 +94,7 @@ public class UserServlet extends BaseServlet {
         }
 
         //Response
-        ObjectMapper mapper = new ObjectMapper();
-        response.setContentType("application/json;charset=utf-8");
-        mapper.writeValue(response.getOutputStream(), info);
+        this.jsonResponse(info, response);
     }
 
     public void findOneUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -109,9 +102,7 @@ public class UserServlet extends BaseServlet {
         Object user = request.getSession().getAttribute("user");
 
         //Response
-        ObjectMapper mapper = new ObjectMapper();
-        response.setContentType("application/json;charset=utf-8");
-        mapper.writeValue(response.getOutputStream(), user);
+        this.jsonResponse(user, response);
     }
 
     public void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {

@@ -1,5 +1,8 @@
 package cn.cusanity.travel.web.servlet;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,5 +25,16 @@ public class BaseServlet extends HttpServlet {
         } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
             e.printStackTrace();
         }
+    }
+
+    public void jsonResponse(Object obj, HttpServletResponse response) throws IOException {
+        ObjectMapper om = new ObjectMapper();
+        response.setContentType("application/json;charset=utf-8");
+        om.writeValue(response.getOutputStream(), obj);
+    }
+
+    public String jsonResponseAsString(Object obj) throws JsonProcessingException {
+        ObjectMapper om = new ObjectMapper();
+        return om.writeValueAsString(obj);
     }
 }

@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
 
         //Send activation Email
 
-        String content="<a href='http://localhost/travel/user/activate"+user.getCode()+"'>Activate your account.</a>";
+        String content="<a href='http://localhost/travel/user/activate?code="+user.getCode()+"'>Activate your account.</a>";
 
         MailUtils.sendMail(user.getEmail(),content,"Activate your account");
 

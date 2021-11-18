@@ -2,13 +2,10 @@ package cn.cusanity.travel.domain;
 
 import java.io.Serializable;
 
-/**
- * 分类实体类
- */
 public class Category implements Serializable {
 
-    private int cid;//分类id
-    private String cname;//分类名称
+    private int cid;
+    private String cname;
 
     public Category() {
     }
