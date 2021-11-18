@@ -16,7 +16,7 @@ import java.lang.reflect.Method;
 public class BaseServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) {
-        //Distribute Different Methods
+        //Distribute Different Methods using reflection
         String requestURI = req.getRequestURI();
         String methodName = requestURI.substring(requestURI.lastIndexOf('/') + 1);
         try {
