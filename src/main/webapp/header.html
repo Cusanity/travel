@@ -1,6 +1,6 @@
 <script>
     $(function () {
-        $.get("findUserServlet", {}, function (data) {
+        $.get("user/findOneUser", {}, function (data) {
             //{uid:1,name:'xxx'}
             if (data === null) {
                 $("#login_nav").hide();
@@ -27,7 +27,7 @@
         <div id="login_nav" class="login">
             <span id="span_username"></span>
             <a href="myfavorite.html" class="collection">My Favorites</a>
-            <a href="javascript:location.href='exitServlet';">Logout</a>
+            <a href="javascript:location.href='user/logout';">Logout</a>
         </div>
     </div>
     <div class="header_wrap">
