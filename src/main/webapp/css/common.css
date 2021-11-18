@@ -1,23 +1,15 @@
-/*
-* @Author: WCM
-* @Date:   2018-01-27 15:13:13
-* @Last Modified by:   WCM
-* @Last Modified time: 2018-01-27 15:17:57
-*/
-
-/*css 初始化 */
 html, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, fieldset, legend, img {
     margin: 0;
-    padding: 0;  
+    padding: 0;
     box-sizing: border-box;
-    font-family: '微软雅黑';
+    font-family: 'Calibri', serif;
 }
 
 fieldset, img, input, button {
     border: none;
     padding: 0;
     margin: 0;
-    outline-style: none;  /*外面环绕线*/
+    outline-style: none;
 }
 
 ul, ol {
@@ -27,26 +19,27 @@ ul, ol {
 input {
     padding-top: 0;
     padding-bottom: 0;
-      /*字体的自动识别*/
 }
+
 select, input {
     vertical-align: middle;
 }
 
-/*输入字居中显示*/
 select, input, textarea {
     font-size: 12px;
     margin: 0;
 }
 
 textarea {
-    resize: none;  /*不可以随意拖动*/
+    resize: none;
 }
-img{
+
+img {
     display: block;
 }
+
 table {
-    border-collapse: collapse; /*合并外连线*/
+    border-collapse: collapse;
 }
 
 .clearfix:before, .clearfix:after {
@@ -55,9 +48,6 @@ table {
     clear: both;
 }
 
-.clearfix {
-    *zoom: 1; /*IE/7/6*/  /*兼容IE6下的写法*/
-}
 a {
     text-decoration: none;
 }
@@ -68,7 +58,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 100%;
 }
 
-/*头部*/
+/*header*/
 
 #header {
     width: 100%;
@@ -86,24 +76,28 @@ h1, h2, h3, h4, h5, h6 {
     height: 50px;
 }
 
-.login_out, .login {  
+.login_out, .login {
+    font-size: 20px;
     height: 50px;
     line-height: 36px;
     float: right;
 }
 
 .login {
-    width: 205px;
-    font-size: 12px;
+    width: auto;
+    font-size: 20px;
 }
-.login a{
+
+.login a {
     font-size: 12px;
     color: #a1a1a1;
 }
+
 .login .collection {
     color: #ff7676;
     margin: 0 16px 0 10px;
 }
+
 .login_out a {
     color: #000;
     font-size: 12px;
@@ -111,7 +105,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .header_wrap {
-    widows: 100%;
+    widows: 1;
     overflow: hidden;
 }
 
@@ -123,7 +117,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .logo,
 .search,
-.hottel {
+.hotel {
     float: left;
 }
 
@@ -156,26 +150,6 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 40px;
     color: #000;
     font-size: 18px;
-}
-
-::-webkit-input-placeholder {
-    /* WebKit browsers */
-    font-size: 12px;
-}
-
-:-moz-placeholder {
-    /* Mozilla Firefox 4 to 18 */
-    font-size: 12px;
-}
-
-::-moz-placeholder {
-    /* Mozilla Firefox 19+ */
-    font-size: 12px;
-}
-
-:-ms-input-placeholder {
-    /* Internet Explorer 10+ */
-    font-size: 12x;
 }
 
 .hot_pic,
@@ -219,7 +193,7 @@ h1, h2, h3, h4, h5, h6 {
     display: inline-block;
 }
 
-.nav>li>a:focus, .nav>li>a:hover{
+.nav > li > a:focus, .nav > li > a:hover {
     background: none;
 }
 
@@ -227,28 +201,26 @@ h1, h2, h3, h4, h5, h6 {
     background-color: #ffd800;
 }
 
-.nav>li>a {   
+.nav > li > a {
     padding: 10px 15px;
 }
 
-/*公共页尾*/
-
-
-/*页尾*/
+/*footer*/
 .fl {
     float: left;
 }
+
 #footer {
     width: 100%;
     background: #3d3d3f;
 }
 
-.why_select {    
+.why_select {
     overflow: hidden;
     margin: 0 auto;
     border-bottom: solid 1px #666;
     padding: 10px 85px;
-    font-family: '微软雅黑';
+    font-family: 'Calibri', serif;
 }
 
 .why_select dl {
@@ -284,7 +256,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
-
 .company {
     width: 100%;
     height: 38px;
@@ -304,23 +275,26 @@ h1, h2, h3, h4, h5, h6 {
 
 
 .pageNum ul li {
-  width: 40px;
-  height: 40px;
-  float: left;
-  border: 1px solid #eee;
-  margin-right: 10px;
-  text-align: center;
-  line-height: 40px;
+    width: 40px;
+    height: 40px;
+    float: left;
+    border: 1px solid #eee;
+    margin-right: 10px;
+    text-align: center;
+    line-height: 40px;
 }
+
 .pageNum ul li.curPage {
     background-color: #ffc900;
 }
+
 .pageNum ul li a {
-  width: 100%;
-  height: 100%;
-  color: #000;
-  font-size: 14px;
+    width: 100%;
+    height: 100%;
+    color: #000;
+    font-size: 14px;
 }
+
 .pageNum ul .threeword {
-  width: 75px;
+    width: 75px;
 }
