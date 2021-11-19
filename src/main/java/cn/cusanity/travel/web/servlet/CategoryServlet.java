@@ -35,7 +35,7 @@ public class CategoryServlet extends BaseServlet {
         int currentPage = (currentPageStr != null && currentPageStr.length() > 0) ? Integer.parseInt(currentPageStr) : 1;
         //Default 'itemPerPage' value is 10
         int itemPerPage = (itemPerPageStr != null && itemPerPageStr.length() > 0) ? Integer.parseInt(itemPerPageStr) : 10;
-        int cid = (cidStr != null && cidStr.length() > 0) ? Integer.parseInt(cidStr) : 1;
+        int cid = (cidStr != null && cidStr.length() > 0) ? Integer.parseInt(cidStr) : 5;
 
         PageBean<Route> routes = categoryService.getRoutes(currentPage, itemPerPage, cid);
         this.jsonResponse(routes, response);

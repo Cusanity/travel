@@ -3,8 +3,8 @@ package cn.cusanity.travel.domain;
 import java.util.List;
 
 public class PageBean<T> {
-    private int totalCount;
     private int totalPage;
+    private int totalCount;
     private int currentPage;
     private int itemPerPage;
     private List<T> itemList;
