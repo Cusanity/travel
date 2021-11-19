@@ -19,7 +19,7 @@
             let list = '<li class="nav-active"><a href="index.html">Home Page</a></li>';
             //Iterate category list
             for (let i = 0; i < data.length; i++) {
-                let li = '<li><a href="route_list.html">' + data[i].cname + '</a></li>'
+                let li = '<li><a href="route_list.html?cid=' + data[i].cid + '">' + data[i].cname + '</a></li>';
                 list += li;
             }
             //Add the link to ranking last
