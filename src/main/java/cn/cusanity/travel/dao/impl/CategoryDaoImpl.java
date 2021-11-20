@@ -1,15 +1,14 @@
 package cn.cusanity.travel.dao.impl;
 
 import cn.cusanity.travel.dao.CategoryDao;
-import cn.cusanity.travel.domain.Category;
-import cn.cusanity.travel.domain.Route;
-import cn.cusanity.travel.domain.RouteImg;
-import cn.cusanity.travel.domain.Seller;
+import cn.cusanity.travel.domain.*;
 import cn.cusanity.travel.util.JDBCUtils;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class CategoryDaoImpl implements CategoryDao {
@@ -77,5 +76,34 @@ public class CategoryDaoImpl implements CategoryDao {
     public Category findCategoryByCid(int cid) {
         String sql = "select * from tab_category where cid = ?";
         return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Category.class), cid);
+    }
+
+    @Override
+    public Favorite findFavByRidUid(int rid, int uid) {
+        Favorite fav = null;
+        try {
+            String sql = "select * from tab_favorite where rid = ? and uid = ?";
+            fav = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Favorite.class), rid, uid);
+        } catch (DataAccessException ignored) {
+        }
+        return fav;
+    }
+
+    @Override
+    public int favCountByRid(int rid) {
+        String sql = "select count(*) from tab_favorite where rid = ? ";
+        return jdbcTemplate.queryForObject(sql, Integer.class, rid);
+    }
+
+    @Override
+    public void updateFav(int rid, int uid, boolean add) {
+        String sql;
+        if (add) {
+            sql = "insert into tab_favorite values(?, ?, ?)";
+            jdbcTemplate.update(sql, rid, new Date(), uid);
+        } else {
+            sql = "delete from tab_favorite where rid = ? and uid = ?";
+            jdbcTemplate.update(sql, rid, uid);
+        }
     }
 }

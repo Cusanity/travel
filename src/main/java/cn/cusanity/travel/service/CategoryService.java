@@ -1,9 +1,6 @@
 package cn.cusanity.travel.service;
 
-import cn.cusanity.travel.domain.Category;
-import cn.cusanity.travel.domain.PageBean;
-import cn.cusanity.travel.domain.Route;
-import cn.cusanity.travel.domain.RouteImg;
+import cn.cusanity.travel.domain.*;
 
 import java.util.List;
 
@@ -15,4 +12,7 @@ public interface CategoryService {
 
     Route findARoute(int rid);
 
+    boolean findFavByRidCid(int rid, int cid);
+
+    int updateFav(int rid, int cid, boolean add);
 }

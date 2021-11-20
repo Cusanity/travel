@@ -1,9 +1,6 @@
 package cn.cusanity.travel.dao;
 
-import cn.cusanity.travel.domain.Category;
-import cn.cusanity.travel.domain.Route;
-import cn.cusanity.travel.domain.RouteImg;
-import cn.cusanity.travel.domain.Seller;
+import cn.cusanity.travel.domain.*;
 
 import java.util.List;
 
@@ -21,4 +18,10 @@ public interface CategoryDao {
     Seller findSellerByRid(int sid);
 
     Category findCategoryByCid(int cid);
+
+    Favorite findFavByRidUid(int rid, int uid);
+
+    int favCountByRid(int rid);
+
+    void updateFav(int rid, int uid, boolean add);
 }

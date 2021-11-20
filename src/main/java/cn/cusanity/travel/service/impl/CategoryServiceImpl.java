@@ -67,6 +67,23 @@ public class CategoryServiceImpl implements CategoryService {
         route.setSeller(seller);
         Category category = categoryDao.findCategoryByCid(route.getCid());
         route.setCategory(category);
+        int favCount = categoryDao.favCountByRid(rid);
+        route.setCount(favCount);
         return route;
+    }
+
+    @Override
+    public boolean findFavByRidCid(int rid, int uid) {
+        Favorite fav = categoryDao.findFavByRidUid(rid, uid);
+        return fav != null;
+    }
+
+    /**
+     * @return new fav number
+     */
+    @Override
+    public int updateFav(int rid, int cid, boolean add) {
+        categoryDao.updateFav(rid, cid, add);
+        return categoryDao.favCountByRid(rid);
     }
 }

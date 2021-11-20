@@ -3,6 +3,7 @@ package cn.cusanity.travel.web.servlet;
 import cn.cusanity.travel.domain.Category;
 import cn.cusanity.travel.domain.PageBean;
 import cn.cusanity.travel.domain.Route;
+import cn.cusanity.travel.domain.User;
 import cn.cusanity.travel.service.CategoryService;
 import cn.cusanity.travel.service.impl.CategoryServiceImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -47,6 +48,7 @@ public class CategoryServlet extends BaseServlet {
 
     /**
      * Query a Route according to 'rid' in request
+     *
      * @param request
      * @param response
      * @throws IOException
@@ -55,5 +57,33 @@ public class CategoryServlet extends BaseServlet {
         String rid = request.getParameter("rid");
         Route route = categoryService.findARoute(Integer.parseInt(rid));
         jsonResponse(route, response);
+    }
+
+    public void isFavorite(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String rid = request.getParameter("rid");
+        User user = (User) request.getSession().getAttribute("user");
+        int uid = (user == null) ? 0 : user.getUid();
+        jsonResponse(categoryService.findFavByRidCid(Integer.parseInt(rid), uid), response);
+    }
+
+    public void updateFav(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String rid = request.getParameter("rid");
+        User user = (User) request.getSession().getAttribute("user");
+        int uid;
+        if (user == null) {
+            //Not logged-in => NO modification
+            return;
+        } else {
+            uid = user.getUid();
+        }
+        int fav_num;
+        if (categoryService.findFavByRidCid(Integer.parseInt(rid), uid)) {
+            //Already bookmarked => Un-bookmark
+            fav_num = categoryService.updateFav(Integer.parseInt(rid), uid, false);
+        } else {
+            //Not bookmarked yet => Bookmark
+            fav_num = categoryService.updateFav(Integer.parseInt(rid), uid, true);
+        }
+        jsonResponse(fav_num, response);
     }
 }
