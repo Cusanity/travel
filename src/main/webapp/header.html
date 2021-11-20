@@ -1,3 +1,4 @@
+<script src="js/getParameter.js"></script>
 <script>
     $(function () {
         //Hide navigation according to login status
@@ -28,6 +29,12 @@
             //Put category list into '#category' element
             $("#category").html(list);
         })
+        //Initialize search
+        $("#search-button").click(function () {
+            let keyword = $ ("#search_input").val();
+            let cid = getParameter("cid");
+            location.href = "/travel/route_list.html?cid=" + cid + "&rname=" + keyword;
+        })
     });
 </script>
 
@@ -54,8 +61,9 @@
                 <a href="index.html"><img src="images/logo.jpg" alt=""></a>
             </div>
             <div class="search">
-                <input name="" type="text" placeholder="Enter a keyword" class="search_input" autocomplete="off">
-                <a href="javascript:;" class="search-button">Search</a>
+                <input name="" type="text" placeholder="Enter a keyword" id="search_input" class="search_input"
+                       autocomplete="off">
+                <a href="javascript:;" id="search-button" class="search-button">Search</a>
             </div>
             <div class="hotel">
                 <div class="hot_pic">
