@@ -5,6 +5,8 @@
         $.get("user/findOneUser", {}, function (data) {
             //{uid:1,name:'xxx'}
             if (data === null) {
+                $("#fav_btn").attr("disabled", "disabled");
+                $("#fav_btn").click(function (){});
                 $("#login_nav").hide();
             } else {
                 var msg = "Welcome back，" + data.name;

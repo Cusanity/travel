@@ -37,6 +37,12 @@
             </div>
             <div class="pros_price">
                 <p class="price"><strong id="price"></strong></p>
+                <div id="failAlert" class="alert alert-danger alert-dismissible" role="alert" style="display: none">
+                    You need to log in before add it to your favorites. <a href="login.html" class="alert-link"> Login </a>
+                </div>
+                <div id="successAlert" class="alert alert-success alert-dismissible"  role="alert" style="display: none">
+                    Your favorites updated! <a href="myfavorite.html" class="alert-link">Check your favorites.</a>
+                </div>
                 <p class="collect">
                     <a class="btn" id="fav_btn"><i class="glyphicon glyphicon-heart-empty"></i>Bookmark</a>
                     <!-- <a class="btn already" disabled="disabled"><i class="glyphicon glyphicon-heart-empty"></i>点击收藏</a> -->
@@ -113,7 +119,7 @@
     }
 
     function updateFav(rid) {
-        $.get("category/updateFav", {rid: rid}, function (fav_num){
+        $.get("category/updateFav", {rid: rid}, function (fav_num) {
             $("#fav_count").html(fav_num);
         });
     }
@@ -175,14 +181,26 @@
         $.get("category/isFavorite", {rid: rid}, function (flag) {
             let fav_btn = $("#fav_btn");
             //Fav-btn Initialization
-            if (flag) {
-                fav_btn.addClass("already");
-                // fav_btn.attr("disabled", disabled);
-            }
-            fav_btn.click(function () {
-                updateFav(rid);
-                fav_btn.toggleClass("already");
-            });
+            $.get("user/findOneUser", {}, function (data) {
+                //{uid:1,name:'xxx'}
+                if (data === null) {
+                    $("#fav_btn").attr("disabled", "disabled");
+                    $("#fav_btn").click(function () {
+                        $("#failAlert").show();
+                    });
+                } else {
+                    if (flag) {
+                        fav_btn.addClass("already");
+                        // fav_btn.attr("disabled", disabled);
+                    }
+                    fav_btn.click(function () {
+                        updateFav(rid);
+                        fav_btn.toggleClass("already");
+                        $("#successAlert").show();
+                    });
+                }
+            })
+
         })
     })
 </script>
