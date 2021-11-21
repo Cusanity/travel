@@ -29,7 +29,7 @@ public class CategoryDaoImpl implements CategoryDao {
             sql += " and cid = ? ";
             params.add(cid);
         }
-        if (rname != null && rname.length() > 0) {
+        if (rname != null && rname.length() > 0 && !"null".equals(rname)) {
             sql += " and rname like ? ";
             params.add("%" + rname + "%");
         }
@@ -44,7 +44,7 @@ public class CategoryDaoImpl implements CategoryDao {
             sql += " and cid = ? ";
             params.add(cid);
         }
-        if (rname != null && rname.length() > 0) {
+        if (rname != null && rname.length() > 0 && !"null".equals(rname)) {
             sql += " and rname like ? ";
             params.add("%" + rname + "%");
         }
