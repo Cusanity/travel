@@ -43,7 +43,7 @@ function load(cid, currentPage, rname) {
             let li = '<li>\n' +
                 '<div class="img"><img src="' + route.rimage + '" style="width: 299px;"></div>\n' +
                 '<div class="text1">\n' +
-                '    <p>' + route.rname + '</p>\n' +
+                '    <p><a href="route_detail.html?rid=' + route.rid + '">' + route.rname + '</a></p>\n' +
                 '    <br/>\n' +
                 '    <p>' + route.routeIntroduce + '</p>\n' +
                 '</div>\n' +

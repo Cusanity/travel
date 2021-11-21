@@ -15,4 +15,6 @@ public interface CategoryService {
     boolean findFavByRidCid(int rid, int cid);
 
     int updateFav(int rid, int cid, boolean add);
+
+    PageBean<Route> getFavsByUid(int uid);
 }

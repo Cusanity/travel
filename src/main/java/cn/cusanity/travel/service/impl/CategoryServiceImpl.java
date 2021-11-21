@@ -86,4 +86,18 @@ public class CategoryServiceImpl implements CategoryService {
         categoryDao.updateFav(rid, cid, add);
         return categoryDao.favCountByRid(rid);
     }
+
+    @Override
+    public PageBean<Route> getFavsByUid(int uid) {
+        PageBean<Route> pb = new PageBean<>();
+        List<Route> favs = categoryDao.getFavsByUid(uid);
+        for (Route route :favs) {
+            Route tempRoute = categoryDao.findARoute(route.getRid());
+            route.setRname(tempRoute.getRname());
+            route.setPrice(tempRoute.getPrice());
+            route.setRimage(tempRoute.getRimage());
+        }
+        pb.setItemList(favs);
+        return pb;
+    }
 }

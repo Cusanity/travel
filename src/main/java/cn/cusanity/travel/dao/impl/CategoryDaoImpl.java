@@ -106,4 +106,10 @@ public class CategoryDaoImpl implements CategoryDao {
             jdbcTemplate.update(sql, rid, uid);
         }
     }
+
+    @Override
+    public List<Route> getFavsByUid(int uid) {
+        String sql = "select * from tab_favorite where uid = ? ";
+        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Route.class), uid);
+    }
 }

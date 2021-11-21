@@ -24,4 +24,6 @@ public interface CategoryDao {
     int favCountByRid(int rid);
 
     void updateFav(int rid, int uid, boolean add);
+
+    List<Route> getFavsByUid(int uid);
 }

@@ -61,6 +61,8 @@ public class CategoryServlet extends BaseServlet {
 
     public void isFavorite(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String rid = request.getParameter("rid");
+        //Check rid
+        if (rid == null || rid.length() == 0) return;
         User user = (User) request.getSession().getAttribute("user");
         int uid = (user == null) ? 0 : user.getUid();
         jsonResponse(categoryService.findFavByRidCid(Integer.parseInt(rid), uid), response);
@@ -85,5 +87,18 @@ public class CategoryServlet extends BaseServlet {
             fav_num = categoryService.updateFav(Integer.parseInt(rid), uid, true);
         }
         jsonResponse(fav_num, response);
+    }
+
+    public void getFavsByUid(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        User user = (User) request.getSession().getAttribute("user");
+        int uid;
+        if (user == null) {
+            //Not logged-in => NO modification
+            return;
+        } else {
+            uid = user.getUid();
+        }
+        PageBean<Route> favsByUid = categoryService.getFavsByUid(uid);
+        this.jsonResponse(favsByUid, response);
     }
 }
