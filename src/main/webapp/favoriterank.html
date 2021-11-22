@@ -13,33 +13,6 @@
 <div class="contant">
     <div class="list clearfix">
         <ul id="fav_ranking">
-            <li>
-                <span class="num one">1</span>
-                <a href="route_detail.html"><img src="images/jiangxuan_4.jpg" alt=""></a>
-                <h4><a href="route_detail.html">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往6-7天自由行 泰国出境旅游 特价往..</a></h4>
-                <p>
-                    <b class="price">&yen;<span>899</span>起</b>
-                    <span class="favorite_count">已收藏450次</span>
-                </p>
-            </li>
-            <li>
-                <span class="num two">2</span>
-                <a href="route_detail.html"><img src="images/jiangxuan_4.jpg" alt=""></a>
-                <h4><a href="route_detail.html">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往6-7天自由行 泰国出境旅游 特价往..</a></h4>
-                <p>
-                    <b class="price">&yen;<span>899</span>起</b>
-                    <span class="favorite_count">已收藏450次</span>
-                </p>
-            </li>
-            <li>
-                <span class="num">3</span>
-                <a href="route_detail.html"><img src="images/jiangxuan_4.jpg" alt=""></a>
-                <h4><a href="route_detail.html">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往6-7天自由行 泰国出境旅游 特价往..</a></h4>
-                <p>
-                    <b class="price">&yen;<span>899</span>起</b>
-                    <span class="favorite_count">已收藏450次</span>
-                </p>
-            </li>
         </ul>
     </div>
 </div>
@@ -48,15 +21,6 @@
 <div id="footer"></div>
 <script type="text/javascript" src="js/include.js"></script>
 <script>
-    // <li>
-    //     <span className="num one">1</span>
-    //     <a href="route_detail.html"><img src="images/jiangxuan_4.jpg" alt=""></a>
-    //     <h4><a href="route_detail.html">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往6-7天自由行 泰国出境旅游 特价往..</a></h4>
-    //     <p>
-    //         <b className="price">&yen;<span>899</span>起</b>
-    //         <span className="favorite_count">已收藏450次</span>
-    //     </p>
-    // </li>
     $.get("category/getTopFavs", {getTopFavs: 10}, function (pageBean) {
         let fav_ranking = '';
         for (let i = 0; i < pageBean.itemList.length; i++) {
@@ -67,8 +31,8 @@
                 '    <a href="route_detail.html?rid=' + route.rid + '"><img src="' + route.rimage + '" alt=""></a>\n' +
                 '    <h4><a href="route_detail.html?rid=' + route.rid + '">' + route.rname + '</a></h4>\n' +
                 '    <p>\n' +
-                '        <b className="price">$<span>' + route.price + '</span></b>\n' +
-                '        <span className="favorite_count">Bookmarked by ' + route.count + ' Users </span>\n' +
+                '        <b class="price">$<span>' + route.price + '</span></b>\n' +
+                '        <span class="favorite_count">Bookmarked by ' + route.count + ' Users </span>\n' +
                 '    </p>\n' +
                 '</li>'
             fav_ranking += li;
