@@ -22,14 +22,21 @@ public class CategoryServiceImpl implements CategoryService {
 
         //Using redis
         List<Category> cl = new ArrayList<>();
-        Jedis jedis = JedisUtil.getJedis();
+        Jedis jedis = null;
+        try {
+            jedis = JedisUtil.getJedis();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 //        Set<String> cnames = jedis.zrange("category", 0, -1);
-        Set<Tuple> cnames = jedis.zrangeWithScores("category", 0, -1);
+        Set<Tuple> cnames = (jedis == null) ? null : jedis.zrangeWithScores("category", 0, -1);
         if (cnames == null || cnames.size() == 0) {
             //Query database and save it in redis cache
             cl = categoryDao.getCategoryList();
-            for (Category category : cl) {
-                jedis.zadd("category", category.getCid(), category.getCname());
+            if(jedis != null) {
+                for (Category category : cl) {
+                    jedis.zadd("category", category.getCid(), category.getCname());
+                }
             }
         } else {
             for (Tuple cname : cnames) {
@@ -91,9 +98,24 @@ public class CategoryServiceImpl implements CategoryService {
     public PageBean<Route> getFavsByUid(int uid) {
         PageBean<Route> pb = new PageBean<>();
         List<Route> favs = categoryDao.getFavsByUid(uid);
-        for (Route route :favs) {
+        for (Route route : favs) {
             Route tempRoute = categoryDao.findARoute(route.getRid());
             route.setRname(tempRoute.getRname());
+            route.setPrice(tempRoute.getPrice());
+            route.setRimage(tempRoute.getRimage());
+        }
+        pb.setItemList(favs);
+        return pb;
+    }
+
+    @Override
+    public PageBean<Route> getTopFavs(int top_num) {
+        PageBean<Route> pb = new PageBean<>();
+        List<Route> favs = categoryDao.getTopFavs(top_num);
+        for (Route route : favs) {
+            Route tempRoute = categoryDao.findARoute(route.getRid());
+            route.setRname(tempRoute.getRname());
+            route.setCount(tempRoute.getCount());
             route.setPrice(tempRoute.getPrice());
             route.setRimage(tempRoute.getRimage());
         }

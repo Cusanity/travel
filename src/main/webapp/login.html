@@ -48,16 +48,6 @@
                 <input id="username" name="username" type="text" placeholder="Enter your username:" autocomplete="off">
                 <label for="password"></label>
                 <input id="password" name="password" type="text" placeholder="Enter your password:" autocomplete="off">
-                <div class="verify">
-                    <label for="check"></label>
-                    <input id="check" name="check" type="text" placeholder="Verification Code:" autocomplete="off">
-                    <span><img src="checkCodes" alt="" onclick="changeCheckCode(this)"></span>
-                    <script type="text/javascript">
-                        function changeCheckCode(img) {
-                            img.src = "checkCodes?" + new Date().getTime();
-                        }
-                    </script>
-                </div>
                 <div class="submit_btn">
                     <button id="btn_sub" type="button">Login</button>
                 </div>

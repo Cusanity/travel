@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="@192.168.148.132" uuid="5e314543-6de8-480d-ac5f-acc42fc74016">
+    <data-source source="LOCAL" name="Rasp" uuid="bcf75979-b07c-427a-b880-dd4862294738">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://192.168.148.132:3306</jdbc-url>
+      <jdbc-url>jdbc:mysql://address=(protocol=tcp)(host=192.168.1.189)(port=3306)</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

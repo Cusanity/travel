@@ -20,7 +20,7 @@
 <body>
 <!--Header-->
 <div id="header"></div>
-<!-- 排行榜 start-->
+<!-- Favs start-->
 <section id="content">
     <section class="hemai_jx">
         <div class="jx_top">
@@ -48,9 +48,7 @@
 <script>
     $.get("category/getFavsByUid", {}, function (pageBean) {
             let fav_list = '';
-            let count = 0;
             for (let i = 0; i < pageBean.itemList.length; i++) {
-                count++;
                 let route = pageBean.itemList[i];
                 let li =
                     '<div class="col-md-3">\n' +

@@ -45,7 +45,7 @@
                 </div>
                 <p class="collect">
                     <a class="btn" id="fav_btn"><i class="glyphicon glyphicon-heart-empty"></i>Bookmark</a>
-                    <!-- <a class="btn already" disabled="disabled"><i class="glyphicon glyphicon-heart-empty"></i>点击收藏</a> -->
+                    <!-- <a class="btn already" disabled="disabled"><i class="glyphicon glyphicon-heart-empty"></i>Bookmark</a> -->
                     <span>Bookmarked by <strong id="fav_count"></strong> user(s)</span>
                 </p>
             </div>
@@ -64,7 +64,7 @@
 <script src="js/getParameter.js"></script>
 <script>
     function refreshImg() {
-        //Switch images by clicking
+        //Switch images by moving mouse
         $('.little_img').on('mousemove', function () {
             $('.little_img').removeClass('cur_img');
             var big_pic = $(this).data('bigpic');
@@ -150,6 +150,7 @@
             $("#phone").html(route.seller.consphone);
             $("#address").html(route.seller.address);
             $("#nav_cname").html(route.category.cname);
+            $("#nav_cname").attr("href", "/travel/route_list.html?cid=" + route.cid);
             $("#fav_count").html(" " + route.count + " ");
 
             //imgs Display

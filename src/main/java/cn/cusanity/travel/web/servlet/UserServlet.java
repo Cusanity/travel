@@ -63,7 +63,7 @@ public class UserServlet extends BaseServlet {
         this.jsonResponse(json, response);
     }
 
-    public void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void login(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Map<String, String[]> map = request.getParameterMap();
         User user = new User();
         try {

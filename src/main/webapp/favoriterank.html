@@ -11,22 +11,15 @@
 <!--Header-->
 <div id="header"></div>
 <div class="contant">
-    <div class="shaixuan">
-        <span>线路名称</span>
-        <input type="text">
-        <span>金额</span>
-        <input type="text">~<input type="text">
-        <button>搜索</button>
-    </div>
     <div class="list clearfix">
-        <ul>
+        <ul id="fav_ranking">
             <li>
                 <span class="num one">1</span>
                 <a href="route_detail.html"><img src="images/jiangxuan_4.jpg" alt=""></a>
                 <h4><a href="route_detail.html">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往6-7天自由行 泰国出境旅游 特价往..</a></h4>
                 <p>
                     <b class="price">&yen;<span>899</span>起</b>
-                    <span class="shouchang">已收藏450次</span>
+                    <span class="favorite_count">已收藏450次</span>
                 </p>
             </li>
             <li>
@@ -35,7 +28,7 @@
                 <h4><a href="route_detail.html">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往6-7天自由行 泰国出境旅游 特价往..</a></h4>
                 <p>
                     <b class="price">&yen;<span>899</span>起</b>
-                    <span class="shouchang">已收藏450次</span>
+                    <span class="favorite_count">已收藏450次</span>
                 </p>
             </li>
             <li>
@@ -44,72 +37,9 @@
                 <h4><a href="route_detail.html">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往6-7天自由行 泰国出境旅游 特价往..</a></h4>
                 <p>
                     <b class="price">&yen;<span>899</span>起</b>
-                    <span class="shouchang">已收藏450次</span>
+                    <span class="favorite_count">已收藏450次</span>
                 </p>
             </li>
-            <li>
-                <span class="num">4</span>
-                <a href="route_detail.html"><img src="images/jiangxuan_4.jpg" alt=""></a>
-                <h4><a href="route_detail.html">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往6-7天自由行 泰国出境旅游 特价往..</a></h4>
-                <p>
-                    <b class="price">&yen;<span>899</span>起</b>
-                    <span class="shouchang">已收藏450次</span>
-                </p>
-            </li>
-            <li>
-                <span class="num">5</span>
-                <a href="route_detail.html"><img src="images/jiangxuan_4.jpg" alt=""></a>
-                <h4><a href="route_detail.html">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往6-7天自由行 泰国出境旅游 特价往..</a></h4>
-                <p>
-                    <b class="price">&yen;<span>899</span>起</b>
-                    <span class="shouchang">已收藏450次</span>
-                </p>
-            </li>
-            <li>
-                <span class="num">6</span>
-                <a href="route_detail.html"><img src="images/jiangxuan_4.jpg" alt=""></a>
-                <h4><a href="route_detail.html">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往6-7天自由行 泰国出境旅游 特价往..</a></h4>
-                <p>
-                    <b class="price">&yen;<span>899</span>起</b>
-                    <span class="shouchang">已收藏450次</span>
-                </p>
-            </li>
-            <li>
-                <span class="num">7</span>
-                <a href="route_detail.html"><img src="images/jiangxuan_4.jpg" alt=""></a>
-                <h4><a href="route_detail.html">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往6-7天自由行 泰国出境旅游 特价往..</a></h4>
-                <p>
-                    <b class="price">&yen;<span>899</span>起</b>
-                    <span class="shouchang">已收藏450次</span>
-                </p>
-            </li>
-            <li>
-                <span class="num">8</span>
-                <a href="route_detail.html"><img src="images/jiangxuan_4.jpg" alt=""></a>
-                <h4><a href="route_detail.html">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往6-7天自由行 泰国出境旅游 特价往..</a></h4>
-                <p>
-                    <b class="price">&yen;<span>899</span>起</b>
-                    <span class="shouchang">已收藏450次</span>
-                </p>
-            </li>
-        </ul>
-    </div>
-    <div class="pageNum">
-        <ul>
-            <li><a href="">Home Page</a></li>
-            <li class="threeword"><a href="#">Previous Page</a></li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#">6</a></li>
-            <li><a href="#">7</a></li>
-            <li><a href="#">8</a></li>
-            <li><a href="#">9</a></li>
-            <li><a href="#">10</a></li>
-            <li class="threeword"><a href="javascript:;">Next Page</a></li>
-            <li class="threeword"><a href="javascript:;">Last Page</a></li>
         </ul>
     </div>
 </div>
@@ -117,5 +47,46 @@
 <!--footer-->
 <div id="footer"></div>
 <script type="text/javascript" src="js/include.js"></script>
+<script>
+    // <li>
+    //     <span className="num one">1</span>
+    //     <a href="route_detail.html"><img src="images/jiangxuan_4.jpg" alt=""></a>
+    //     <h4><a href="route_detail.html">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往6-7天自由行 泰国出境旅游 特价往..</a></h4>
+    //     <p>
+    //         <b className="price">&yen;<span>899</span>起</b>
+    //         <span className="favorite_count">已收藏450次</span>
+    //     </p>
+    // </li>
+    $.get("category/getTopFavs", {getTopFavs: 10}, function (pageBean) {
+        let fav_ranking = '';
+        for (let i = 0; i < pageBean.itemList.length; i++) {
+            let route = pageBean.itemList[i];
+            let li =
+                '<li>\n' +
+                '    <span class="num">' + (i + 1) + '</span>\n' +
+                '    <a href="route_detail.html?rid=' + route.rid + '"><img src="' + route.rimage + '" alt=""></a>\n' +
+                '    <h4><a href="route_detail.html?rid=' + route.rid + '">' + route.rname + '</a></h4>\n' +
+                '    <p>\n' +
+                '        <b className="price">$<span>' + route.price + '</span></b>\n' +
+                '        <span className="favorite_count">Bookmarked by ' + route.count + ' Users </span>\n' +
+                '    </p>\n' +
+                '</li>'
+            fav_ranking += li;
+        }
+        $("#fav_ranking").html(fav_ranking);
+        $('#fav_ranking > li > .num').each(function () {
+            switch ($(this).html()) {
+                case "1":
+                    $(this).toggleClass("one");
+                    return;
+                case "2":
+                    $(this).toggleClass("two");
+                    return;
+                default:
+                    return;
+            }
+        });
+    })
+</script>
 </body>
 </html>

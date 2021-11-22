@@ -101,9 +101,13 @@ public class CategoryDaoImpl implements CategoryDao {
         if (add) {
             sql = "insert into tab_favorite values(?, ?, ?)";
             jdbcTemplate.update(sql, rid, new Date(), uid);
+            sql = "update tab_route SET count = count + 1 where rid = ?";
+            jdbcTemplate.update(sql, rid);
         } else {
             sql = "delete from tab_favorite where rid = ? and uid = ?";
             jdbcTemplate.update(sql, rid, uid);
+            sql = "update tab_route SET count = count - 1 where rid = ?";
+            jdbcTemplate.update(sql, rid);
         }
     }
 
@@ -111,5 +115,12 @@ public class CategoryDaoImpl implements CategoryDao {
     public List<Route> getFavsByUid(int uid) {
         String sql = "select * from tab_favorite where uid = ? ";
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Route.class), uid);
+    }
+
+    @Override
+    public List<Route> getTopFavs(int top_num) {
+//        String sql = "select rid, count(uid) from tab_favorite group by rid order BY COUNT(uid) DESC limit 0, ?";
+        String sql = "select * from tab_route order BY count DESC limit 0, ?";
+        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Route.class), top_num);
     }
 }

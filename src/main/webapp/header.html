@@ -1,12 +1,14 @@
 <script src="js/getParameter.js"></script>
 <script>
     $(function () {
+        //update the style of selected nav item
         //Hide navigation according to login status
         $.get("user/findOneUser", {}, function (data) {
             //{uid:1,name:'xxx'}
             if (data === null) {
                 $("#fav_btn").attr("disabled", "disabled");
-                $("#fav_btn").click(function (){});
+                $("#fav_btn").click(function () {
+                });
                 $("#login_nav").hide();
             } else {
                 var msg = "Welcome back，" + data.name;
@@ -17,12 +19,22 @@
         //Get Category info
         $.get("category/getCategoryList", {}, function (data) {
             //category format: [{cid:1, cname:xxx},{cid:2, cname:xxx"}...]
-
+            let cid = getParameter("cid");
             //Add the link to home page first
-            let list = '<li class="nav-active"><a href="index.html">Home Page</a></li>';
+            let list;
+            if (cid === null || cid === "null") {
+                list = '<li class="nav-active"><a href="index.html">Home Page</a></li>';
+            } else {
+                list = '<li><a href="index.html">Home Page</a></li>';
+            }
             //Iterate category list
             for (let i = 0; i < data.length; i++) {
-                let li = '<li><a href="route_list.html?cid=' + data[i].cid + '">' + data[i].cname + '</a></li>';
+                let li;
+                if (parseInt(data[i].cid) === parseInt(cid)) {
+                    li = '<li><a class="nav-active" href="route_list.html?cid=' + data[i].cid + '">' + data[i].cname + '</a></li>';
+                } else {
+                    li = '<li><a href="route_list.html?cid=' + data[i].cid + '">' + data[i].cname + '</a></li>';
+                }
                 list += li;
             }
             //Add the link to ranking last
@@ -33,7 +45,7 @@
         })
         //Initialize search
         $("#search-button").click(function () {
-            let keyword = $ ("#search_input").val();
+            let keyword = $("#search_input").val();
             let cid = getParameter("cid");
             location.href = "/travel/route_list.html?cid=" + cid + "&rname=" + keyword;
         })

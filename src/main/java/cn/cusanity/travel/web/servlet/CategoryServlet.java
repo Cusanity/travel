@@ -48,10 +48,6 @@ public class CategoryServlet extends BaseServlet {
 
     /**
      * Query a Route according to 'rid' in request
-     *
-     * @param request
-     * @param response
-     * @throws IOException
      */
     public void findARoute(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String rid = request.getParameter("rid");
@@ -100,5 +96,13 @@ public class CategoryServlet extends BaseServlet {
         }
         PageBean<Route> favsByUid = categoryService.getFavsByUid(uid);
         this.jsonResponse(favsByUid, response);
+    }
+
+    public void getTopFavs(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String top_num_str = request.getParameter("top_num");
+        //Default: Get 10 most favorited routes
+        int top_num = (top_num_str == null || top_num_str.length() == 0) ? 10 : Integer.parseInt(top_num_str);
+        PageBean<Route> topFavs = categoryService.getTopFavs(top_num);
+        this.jsonResponse(topFavs, response);
     }
 }
